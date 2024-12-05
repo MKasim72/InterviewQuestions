@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interview Questions ~ Code With Harry</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            width: 100%;
+            height: 100vh;
+            background-color: rgb(4, 3, 44);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 5s;
+        }
+        .container{
+            width: 90%;
+            height: 90%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            overflow: scroll;
+            scrollbar-width: none;
+        }
+        .box{
+            background-color: navy;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .answer{
+            display: none;  /* Initially hidden */
+            padding: 10px;
+            background-color: rgba(0, 0, 255, 0.2);
+            margin-top: 10px;
+        }
+        .fa-minus {
+            display: none;  /* Initially hide the minus sign */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h3>Interview Question 1</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        <div class="answer">
+            <p><b>Question 1</b> : <br><br>The Magical Sorting Hat: Imagine you are creating a magical sorting hat for a wizard school. Implement a JavaScript function that takes an array of student names and assigns them to one of the four houses (Gryffindor (length less than 6), Hufflepuff(length less than 8), Ravenclaw(length less than 12), or Slytherin(length greater than or equal to 12)) based on the length of their names.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+let students = [
+    "Alice",
+    "Jonathan",
+    "Zoe",
+    "Christopher",
+    "Mia",
+    "Alexander",
+    "Emma",
+    "Benjamin",
+    "Sophia",
+    "Liam",
+];
+
+let houses = []
+
+function sortStudents(students) {
+    for (student of students){
+        if(student.length < 6){
+                houses.push("Gryffindor")
+        }
+        else if(student.length < 8){
+            houses.push("Hufflepuff")
+        }
+        else if(student.length < 12){
+            houses.push("Ravenclaw")
+        }
+        else{
+            houses.push("Slytherin")
+        }
+    }
+}
+sortStudents(students)
+console.log(houses)
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 2</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 2</b> : <br><br> The Double Trouble: You are tasked with writing a function that doubles each element in an array. However, there's a catch: if the array contains consecutive duplicate elements, only double one of them.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+let result = [];
+let arr = [2, 2, 3, 4, 4, 4, 5]
+function doubleTrouble(arr) {
+    let i = 0;
+    for (let i=0;i<=arr.length;i++){
+        if(i==0 || arr[i] !== arr[i-1]){
+            result.push(arr[i]*2);
+        }
+        // else{
+        //     result.push(arr[i]);
+        // }
+    }
+}
+doubleTrouble(arr)
+console.log(result)
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 3</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 3</b> : <br><br> The Mirror Mirror: Imagine you have a string, and you need to create a new string that is a mirror image of the original. Write a function that appends the reversed version of the original string to itself.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+let str = 'iamdeveloper'
+function mirrorString(str) {
+    let reverse = str.split('').reverse().join('')
+    return str+reverse
+}
+let newStr = mirrorString(str)
+console.log(newStr)
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <!-- Repeat for all questions -->
+        <div class="box">
+            <h3>Interview Question 4</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 4</b> : <br><br>The Password Validator: You are building a password validation feature. Create a function that checks if a given password meets the following criteria: at least 8 characters long, contains both uppercase and lowercase letters, and includes at least one digit</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+function validatePassword(password) {
+    if(password.length<8){
+        console.log("Password must be at least of 8 characters")
+    }
+    let hasUpper = false
+    let hasLower = false
+    let hasDigit = false
+
+    for (let i=0;i<password.length;i++){
+        let char = password[i]
+        if(char >= 'A' && char <= 'Z'){
+            hasUpper = true
+        }
+        else if(char >= 'a' && char <= 'z'){
+            hasLower = true
+        }
+        else if (char >= '0' && char <= '9') {
+            hasDigit = true;
+        }
+    }
+
+    if(hasUpper && hasLower && hasDigit){
+        console.log("Password is valid")
+    }
+    else{
+        console.log("Password is not valid")
+    }
+
+}
+validatePassword("bhaiS123591") //Password is valid
+validatePassword("bhai123591")  //Password is not valid
+&lt;/script&gt;
+        </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 5</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 5</b> : <br><br>  The Sum Selector: You are working on a function that should sum all numbers in an array until it encounters a negative number. Write a function that performs this summation..</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+&lt;script&gt;
+let arr = [5,5,5,1,64,64,646,164,64,64,684,616,549,46,76,7,6479,76,498,79,4697,964,974,64,-5,-684,564,684]
+function sumUntilNegative(arr) {
+    let sum = 0;
+    for(let i=0;i&lt;arr.length;i++){
+        if(arr[i]&lt;0&gt;){
+            break;
+        }
+        else{
+            sum += arr[i];
+        }
+    }
+    return sum
+}
+let sum = sumUntilNegative(arr)
+console.log(sum)
+&lt;/script&gt;
+                </pre>
+                
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 6</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 6</b> : <br><br> The Vowel Counter: You need to create a function that counts the number of vowels in a given string. Consider both uppercase and lowercase vowels. </p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+let str = "hello world"
+function countVowels(str) {
+    let counter = 0
+    for(let i=0;i&lt;str.length;i++){
+        let vowels = 'aeiou'
+        if(vowels.toLowerCase().includes(str[i])){
+            counter++
+        }
+    }
+    return counter
+}
+console.log(countVowels(str))
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 7</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 7</b> : <br><br> The Local Storage Manager: You are working on a note-taking app, and you want to implement a function named saveNoteToLocalStorage that takes a note object and saves it to the browser's local storage.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+note = prompt("Enter your Note")
+const saveNoteToLocalStorage = (note) =>{
+    localStorage.setItem("note", note)
+    document.write(note)
+}
+saveNoteToLocalStorage(note)
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 8</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 8</b> : <br><br> Async Array Mapping: Write an asynchronous function that takes an array of numbers and returns a new array of Promises where each number is multiplied by 2 after a delay of 500 milliseconds.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+let arr = [1,2,3,4,5,6,7,8,9,10]
+const doubleInt = async(n) =>{
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(n * 2);
+            }, 500);
+    })
+}
+const mapping = async(arr) =>{
+    let promises = await arr.map((num)=>doubleInt(num))
+    return Promise.all(promises)
+}
+mapping(arr).then((result) => {
+    console.log(result); 
+});
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 9</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 9</b> : <br><br>The Asynchronous Shopper: Imagine you are building an online shopping application. Write an asynchronous function called placeOrder that simulates placing an order and returns a promise. The promise should resolve with an order confirmation message after a random delay.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+const placeOrder = async () => {
+         
+    const delay = Math.floor(Math.random() * 2000) + 1000;
+
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            resolve("Your order has been placed successfully!");
+        }, delay);
+    });
+};
+
+placeOrder()
+    .then((confirmationMessage) => {
+        console.log(confirmationMessage);
+    })
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 10</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 10</b> : <br><br>The Coffee Machine: In your coffee shop application, you need to simulate the process of brewing coffee asynchronously. Write an async function named brewCoffee that takes the type of coffee and returns a promise. The promise should resolve with a message indicating that the coffee is ready after a random delay.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+let type = prompt("Enter which type of coffee you want to order ?")
+async function brewCoffee(type) {
+
+    const delay = 0 + Math.random() * 5
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(`Your ${type} coffee is ready!`
+            )
+            }, delay * 1000)
+    })
+}
+brewCoffee(type).then((msg)=>{
+    console.log(msg)
+})
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 11</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 11</b> : <br><br>The Array Filterer: You are building a search feature for your e-commerce site. Write a function named filterProducts that takes an array of product objects and a filter criterion. The function should return a new array containing only the products that match the filter criterion.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+const products = [
+{
+    name: "Laptop",
+    price: 899.99,
+    description: "High performance laptop with 16GB RAM and 512GB SSD"
+},
+{
+    name: "Smartphone",
+    price: 499.99,
+    description: "Latest model with 128GB storage and a powerful camera"
+},
+{
+    name: "Headphones",
+    price: 89.99,
+    description: "Noise-cancelling over-ear headphones for immersive sound"
+},
+{
+    name: "Smartwatch",
+    price: 199.99,
+    description: "Track your fitness and receive notifications on the go"
+},
+{
+    name: "Keyboard",
+    price: 49.99,
+    description: "Mechanical keyboard with customizable RGB backlighting"
+},
+{
+    name: "Mouse",
+    price: 29.99,
+    description: "Wireless mouse with ergonomic design and precision control"
+},
+{
+    name: "Monitor",
+    price: 249.99,
+    description: "27-inch 4K UHD monitor with vibrant color display"
+},
+{
+    name: "Tablet",
+    price: 399.99,
+    description: "10-inch tablet with fast performance and long battery life"
+},
+{
+    name: "Charger",
+    price: 19.99,
+    description: "Fast-charging adapter for USB-C devices"
+},
+{
+    name: "Bluetooth Speaker",
+    price: 59.99,
+    description: "Portable speaker with rich bass and waterproof design"
+}
+]
+const filterProducts = (search) =>{
+return products.filter(product => product.name.includes(search));
+}
+const filteredProducts = filterProducts("Smart");
+console.log(filteredProducts);
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 12</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 3</b> : <br><br> The Token Manager: You are developing a user authentication system, and you need to manage user authentication tokens. Implement a function named setAuthToken that takes an authentication token and sets it in localStorage with an expiration time.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+const name = prompt("Enter your Name : ")
+function setAuthToken(token) {
+    const tokenObject = {
+        token: token+(0+Math.random()*1400000),
+        expirationTime: new Date().getTime() + 1000
+    }
+    const tokenString = JSON.stringify(tokenObject);
+    localStorage.setItem(token, tokenString);
+    console.log(tokenString);
+    // const expirationDate = new Date().getTime() + expirationTime * 1000;
+    // localStorage.setItem(name + "Expiration", expirationDate.toString());
+}
+setAuthToken(name)
+document.querySelector("button").addEventListener('click',()=>{
+    document.write(localStorage.getItem(name))
+})
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 13</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 13</b> : <br><br> The Shopping Cart Totalizer: You are working on an e-commerce website, and you need to calculate the total cost of items in the shopping cart. Implement a function named calculateTotal that takes an array of products with prices and quantities and returns the total cost.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+const shoppingCart = [
+            {
+                item: "Laptop",
+                unitPrice: 899.99,
+                quantity: 2 
+            },
+            {
+                item: "Smartphone",
+                unitPrice: 499.99,
+                quantity: 1
+            },
+            {
+                item: "Headphones",
+                unitPrice: 89.99,
+                quantity: 3 
+            }
+        ];
+
+function calculateTotal(products) {
+    let total = 0;
+
+    products.map(product => {
+        total += product.unitPrice * product.quantity;});
+        return total;
+
+}
+
+console.log(calculateTotal(shoppingCart));
+
+&lt;/script&gt;
+              </pre>
+        </div>
+
+        <div class="box">
+            <h3>Interview Question 14</h3>
+            <i class="fa-solid fa-plus"></i>
+            <i class="fa-solid fa-minus"></i>
+        </div>
+        
+        <div class="answer">
+            <p><b>Question 14</b> : <br><br>The Window Scroller: You are developing a single-page application with a smooth scrolling effect. Implement a function named smoothScrollToTop that smoothly scrolls the window to the top when called.</p><br>
+            <p><b>Answer</b> : <br></p>
+            <pre>
+
+&lt;script&gt;
+function smoothScrollToTop() {
+            
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' 
+    });
+}
+&lt;/script&gt;
+              </pre>
+        </div>
+        
+        <!-- Add additional questions and answers here as needed -->
+    </div>
+
+    <script>
+        // Get all question boxes
+        const questionBoxes = document.querySelectorAll('.box');
+
+        // Add click event listeners to each box
+        questionBoxes.forEach((box, index) => {
+            box.addEventListener('click', () => {
+                const answer = box.nextElementSibling; // The corresponding answer div
+                const plusIcon = box.querySelector('.fa-plus');
+                const minusIcon = box.querySelector('.fa-minus');
+                
+                // Toggle the visibility of the answer
+                if (answer.style.display === 'none' || answer.style.display === '') {
+                    answer.style.display = 'block';
+                    plusIcon.style.display = 'none'; // Hide plus icon
+                    minusIcon.style.display = 'inline'; // Show minus icon
+                } else {
+                    answer.style.display = 'none';
+                    plusIcon.style.display = 'inline'; // Show plus icon
+                    minusIcon.style.display = 'none'; // Hide minus icon
+                }
+            });
+        });
+    </script>
+</body>
+</html>
